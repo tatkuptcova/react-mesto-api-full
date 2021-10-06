@@ -1,0 +1,16 @@
+.page {
+  justify-items: center;
+  font-family: 'Inter',Arial, sans-serif;
+  background-color: black;
+  font-weight: normal;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* max-width: 1280px;
+  min-width: 300px;
+  margin: 0 auto;
+  font-family: 'Inter', Arial, sans-serif;
+  background: black;
+  font-weight: normal; */
+}

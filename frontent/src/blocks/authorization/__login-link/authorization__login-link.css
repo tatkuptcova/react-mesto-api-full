@@ -1,0 +1,9 @@
+.authorization__login-link{
+    color:#fff;
+    font-size: 14px;
+    margin-top:15px;
+    text-decoration: none;
+}
+.authorization__login-link:hover{
+    opacity: 0.7;
+}

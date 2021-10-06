@@ -1,0 +1,15 @@
+.authorization__input{
+    border:none;
+    border-bottom: 2px solid rgb(204,204,204);
+    color: #fff;
+    width:360px;
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    background: #000000;
+
+}
+.authorization__input:focus{
+    outline: none;
+
+}

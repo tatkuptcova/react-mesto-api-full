@@ -1,0 +1,16 @@
+.button {
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    text-transform: none;
+    overflow: visible;
+    transition: opacity .5s linear;
+}
+
+.button:active {
+    border-style: inset;
+}
+

@@ -1,0 +1,8 @@
+.elements__info {
+    display: flex;
+    padding: 25px 21px 31px;
+    justify-content: space-between;
+    border-radius: 0 0 10px 10px;
+    background-color: #fff;
+    margin-top: -5px;
+}

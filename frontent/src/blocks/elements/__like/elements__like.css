@@ -1,0 +1,7 @@
+.elements__like {
+    display: flex;
+    margin-left: 21px;
+    justify-content: center;
+    max-width: 21px;
+    flex-wrap: wrap;
+}

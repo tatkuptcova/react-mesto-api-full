@@ -1,0 +1,18 @@
+.container {
+    margin: 0 auto;
+    max-width: 882px; 
+}
+
+@media screen and (max-width: 920px) {
+    .container {
+        margin-left: 48px;
+        margin-right: 48px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .container {
+        margin-left: 19px;
+        margin-right: 19px;
+    }
+}

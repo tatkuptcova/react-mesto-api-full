@@ -1,0 +1,22 @@
+.profile__avatar {
+  background-color: #000;
+  background-image: url(../../../images/editAvatar.svg);
+  background-position: center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  
+  padding: 0;
+  margin: 0;
+  margin-right: 30px;
+  transition: opacity .5s linear 0s;
+}
+  
+@media screen and (max-width: 730px) {
+  .profile__avatar {
+    margin-right: 0;
+  }
+}

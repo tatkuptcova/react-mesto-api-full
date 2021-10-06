@@ -1,0 +1,32 @@
+.popup__input {
+	height: 27px;
+	border: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+	margin-top: 25px;
+	box-sizing: border-box;
+    padding-bottom: 13px;
+}
+
+/* .popup__input:invalid { */
+    /* border-bottom: 1px solid red; */
+/* } */
+
+
+/*.popup__input {
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 30px;
+    padding-bottom: 13px;
+}
+
+@media screen and (max-width: 464px) {
+	.popup__input {
+		width: 100%;
+	}
+}*/
+
