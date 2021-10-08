@@ -36,10 +36,10 @@ mongoose.connect(
 
 app.use(cors({
   origin: [
-    'https://domainname.tatkupsova.nomoredomains.club',
-    'https://domainname.tatkupsov.nomoredomains.club',
-    'http://domainname.tatkupsova.nomoredomains.club',
-    'http://domainname.tatkupsov.nomoredomains.club',
+    'https://domainname.tatkupcova.nomoredomains.club',
+    'https://domainname.tatkupcov.nomoredomains.club',
+    'http://domainname.tatkupcova.nomoredomains.club',
+    'http://domainname.tatkupcov.nomoredomains.club',
     'http://localhost:3002',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
