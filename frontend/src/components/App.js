@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import api from '../utils/api';
@@ -41,7 +42,7 @@ function App() {
           .catch(err => {
             console.log (`Ошибка: ${err}`)
           });
-    }, []);
+    },[]);
     
     React.useEffect(() => {
         api.getInitialCards()
