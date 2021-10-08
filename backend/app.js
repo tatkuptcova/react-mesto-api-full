@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -24,14 +25,28 @@ app.use(requestLogger);
 
 mongoose.connect(
   'mongodb://localhost:27017/mestodb',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) throw err;
-  },
+  // {
+  //   useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  // },
+  // (err) => {
+  //   if (err) throw err;
+  // },
 );
+
+app.use(cors({
+  origin: [
+    'https://domainname.tatkupsova.nomoredomains.club',
+    'https://domainname.tatkupsov.nomoredomains.club',
+    'http://domainname.tatkupsova.nomoredomains.club',
+    'http://domainname.tatkupsov.nomoredomains.club',
+    'http://localhost:3002',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  allowedHeaders: ['Authorization', 'Content-Type'],
+  credentials: true,
+  optionsSuccessStatus: 200,
+}));
 
 app.use(helmet());
 app.use(express.json());

@@ -45,7 +45,7 @@ function Register ({onSubmit}){
                     className="authorization__input authorization__input_password"
                 />
                 <button type="submit" className="authorization__button">Зарегистрироваться</button>
-                <Link className="authorization__login-link" to="/sign-in">Уже зарегистрированы? Войти</Link>
+                <Link className="authorization__login-link" to="/signin">Уже зарегистрированы? Войти</Link>
             </form>
         </div>
     )

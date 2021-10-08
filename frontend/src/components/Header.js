@@ -9,13 +9,13 @@ function Header ({email,onSignOut}){
             <div className="header__container">
                 <Route exact path="/">
                     <p className="header__email">{email}</p>
-                    <Link to="/sign-in" className="header__link" onClick={onSignOut}>Выйти</Link>
+                    <Link to="/signin" className="header__link" onClick={onSignOut}>Выйти</Link>
                 </Route>
-                <Route exact path="/sign-in">
-                    <Link to="/sign-up" className="header__link">Регистрация</Link>
+                <Route exact path="/signin">
+                    <Link to="/signup" className="header__link">Регистрация</Link>
                 </Route>
-                <Route exact path="/sign-up">
-                    <Link to="/sign-in" className="header__link">Войти</Link>
+                <Route exact path="/signup">
+                    <Link to="/signin" className="header__link">Войти</Link>
                 </Route>
 
             </div>

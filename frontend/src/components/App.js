@@ -220,10 +220,10 @@ function App() {
                             onCardLike={handleCardLike}
                             onCardDelete={handleCardDelete}
                         />
-                        <Route  path="/sign-in">
+                        <Route  path="/signin">
                             <Login onSubmit={handleLoginSubmit}/>
                         </Route>
-                        <Route  path="/sign-up">
+                        <Route  path="/signup">
                             <Register onSubmit={handleRegSubmit}/>
                         </Route>
                     </Switch>
