@@ -1,4 +1,4 @@
-const BASE_URL = 'http://domainname.tatkuptcova.nomoredomains.club/api/';
+const BASE_URL = 'http://domainname.tatkuptcova.nomoredomains.club/api';
 
 const checkResponse = (res) => {
     if (res.ok) {
