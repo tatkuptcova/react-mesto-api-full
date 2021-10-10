@@ -5,7 +5,12 @@ const UnauthorizedError = require('../errors/unauthorizedErr'); // 401
 const { JWT_SECRET = 'secret-key' } = process.env;
 
 module.exports = (req, res, next) => {
-  const token = req.cookies.jwt;
+  let token = ''
+  
+  const authHeader = req.header('authorization')
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1]
+  }
 
   if (!token) {
     throw new UnauthorizedError('Ошибка авторизации');
