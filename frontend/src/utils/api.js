@@ -16,7 +16,7 @@ class Api {
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
-            headers: this._headers,
+            headers: this.requestHeaders(),
         })
         .then((res) => this._getResponse(res))
     }
@@ -24,7 +24,7 @@ class Api {
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'GET',
-            headers: this._headers,
+            headers: this.requestHeaders(),
         })
         .then((res) => this._getResponse(res));
     }
@@ -32,7 +32,7 @@ class Api {
     changeUserInfo(newName, newJob) {
         return fetch(`${this._baseUrl}/users/me`, {
           method: 'PATCH',
-          headers: this._headers,
+          headers: this.requestHeaders(),
           body: JSON.stringify({ name: newName, about: newJob }),
         })
           .then((res) => this._getResponse(res));
@@ -41,7 +41,7 @@ class Api {
     postNewCard(name, link) {
         return fetch(`${this._baseUrl}/cards`, {
           method: 'POST',
-          headers: this._headers,
+          headers: this.requestHeaders(),
           body: JSON.stringify({ name: name, link: link }),
         })
           .then((res) => this._getResponse(res));
@@ -54,7 +54,7 @@ class Api {
     like(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
           method: 'PUT',
-          headers: this._headers,
+          headers: this.requestHeaders(),
         })
           .then((res) => this._getResponse(res));
     }
@@ -62,7 +62,7 @@ class Api {
     dislike(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: 'DELETE',
-            headers: this._headers,
+            headers: this._hearequestHeaders(),
         })
           .then((res) => this._getResponse(res))
     }
@@ -70,7 +70,7 @@ class Api {
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
           method: 'DELETE',
-          headers: this._headers,
+          headers: this.requestHeaders(),
         })
           .then((res) => this._getResponse(res));
     }
@@ -78,17 +78,21 @@ class Api {
     updateAvatar(link) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: this.requestHeaders(),
             body: JSON.stringify({ avatar: link}),
         })
           .then((res) => this._getResponse(res))
+    }
+
+    requestHeaders() {
+        this._headers.authorization = localStorage.getItem('jwt')
+        return this._headers
     }
 }
 
 const api = new Api({
     baseUrl: auth.BASE_URL,
     headers: {
-        'authorization': localStorage.getItem('jwt'),
         'content-type': 'application/json',
     }
 });
