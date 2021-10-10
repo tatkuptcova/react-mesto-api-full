@@ -85,7 +85,7 @@ class Api {
     }
 
     requestHeaders() {
-        this._headers.authorization = localStorage.getItem('jwt')
+        this._headers.Authorization = "Bearer " + localStorage.getItem('jwt')
         return this._headers
     }
 }
