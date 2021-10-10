@@ -34,19 +34,12 @@ mongoose.connect(
   // },
 );
 
-// app.use(cors({
-//   origin: [
-//     'https://domainname.tatkupcova.nomoredomains.club',
-//     'https://domainname.tatkupcov.nomoredomains.club',
-//     'http://domainname.tatkupcova.nomoredomains.club',
-//     'http://domainname.tatkupcov.nomoredomains.club',
-//     'http://localhost:3002',
-//   ],
-//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//   allowedHeaders: ['Authorization', 'Content-Type'],
-//   credentials: true,
-//   optionsSuccessStatus: 200,
-// }));
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}));
 
 app.use(helmet());
 app.use(express.json());
