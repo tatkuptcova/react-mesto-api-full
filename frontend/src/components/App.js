@@ -37,10 +37,11 @@ function App() {
         handleCheckToken();
         api.getUserInfo()
           .then(user => {
+            console.log(`Текущий пользователь: ${user}`)
             setCurrentUser(user);
           })
           .catch(err => {
-            console.log (`Ошибка: ${err}`)
+            console.log(`Ошибка установки пользователя: ${err}`)
           });
     },[]);
     
@@ -50,7 +51,7 @@ function App() {
             setCards(res)
           })
           .catch(err => {
-            console.log(`Ошибка: ${err}`)
+            console.log(`Ошибка установки карточек: ${err}`)
         });
     }, []);
 
@@ -145,7 +146,7 @@ function App() {
     }
 
     function handleCheckToken(){
-        const jwt =localStorage.getItem("jwt");
+        const jwt = localStorage.getItem("jwt");
         if (jwt){
             auth.checkToken(jwt)
                 .then((res) => {
