@@ -1,3 +1,5 @@
+import * as auth from './auth';
+
 class Api {
     constructor({baseUrl, headers}) {
         this._baseUrl = baseUrl;
@@ -84,9 +86,9 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-25',
+    baseUrl: auth.BASE_URL,
     headers: {
-        'authorization': 'f5fd2afd-988c-4392-86f3-d04957b3b6e7',
+        'authorization': localStorage.getItem('jwt'),
         'content-type': 'application/json',
     }
 });
