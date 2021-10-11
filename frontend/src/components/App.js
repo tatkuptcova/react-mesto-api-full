@@ -34,28 +34,6 @@ function App() {
     const history = useHistory();
     
     React.useEffect(() => {
-        handleCheckToken();
-        api.getUserInfo()
-          .then(user => {
-            console.log(`Текущий пользователь: ${user}`)
-            setCurrentUser(user);
-          })
-          .catch(err => {
-            console.log(`Ошибка установки пользователя: ${err}`)
-          });
-    },[]);
-    
-    React.useEffect(() => {
-        api.getInitialCards()
-          .then(res =>{
-            setCards(res)
-          })
-          .catch(err => {
-            console.log(`Ошибка установки карточек: ${err}`)
-        });
-    }, []);
-
-    React.useEffect(() => {
         window.addEventListener('keydown', (e) => {
           if (e.key === 'Escape') {
             closeAllPopups();
@@ -124,7 +102,7 @@ function App() {
     }
       
     function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(userId => userId === currentUser._id);
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
               const newCards = cards.map((c) => c._id === card._id ? newCard : c);
@@ -143,24 +121,6 @@ function App() {
         .catch(err => {
             console.log(`Ошибка: ${err}`)
         })
-    }
-
-    function handleCheckToken(){
-        const jwt = localStorage.getItem("jwt");
-        if (jwt){
-            auth.checkToken(jwt)
-                .then((res) => {
-                    setIsLoggedIn(true)
-                    setEmail(res.data.email)
-                    history.push('/');
-            })
-            .catch(err => {
-                if (err.status === 401) {
-                     console.log('401 — Токен не передан или передан не в том формате')
-                }
-                console.log('401 — Переданный токен некорректен')
-            })
-        }
     }
 
     function handleRegSubmit(email,password){
@@ -182,9 +142,25 @@ function App() {
     function handleLoginSubmit(email,password){
         auth.login(email, password)
             .then(res=>{
-                localStorage.setItem("jwt", res.token)
+                localStorage.setItem("jwt", res.token);
                 setIsLoggedIn(true);
                 setEmail(email);
+                api.getUserInfo()
+                    .then(user => {
+                    console.log(`Текущий пользователь: %o`, user)
+                    setCurrentUser(user);
+                    })
+                    .catch(err => {
+                    console.log(`Ошибка установки пользователя: ${err}`)
+                    });
+
+                api.getInitialCards()
+                    .then(res =>{
+                        setCards(res)
+                    })
+                    .catch(err => {
+                        console.log(`Ошибка установки карточек: ${err}`)
+                    });
                 history.push("/")
         })
         .catch((err)=>{

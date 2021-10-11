@@ -6,9 +6,9 @@ function Card (props) {
     
     const currentUser = React.useContext(CurrentUserContext);
 
-    const isOwn = props.card.owner._id === currentUser._id;
+    const isOwn = props.card.owner === currentUser._id;
     
-    const isLiked = props.card.likes.some(i => i._id === currentUser._id); 
+    const isLiked = props.card.likes.some(userId => userId === currentUser._id); 
     const cardLikeButtonClassName = (`button elements__button-like ${isLiked ? 'button elements__button-like_active' : ''}`);
     
 

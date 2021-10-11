@@ -62,7 +62,7 @@ class Api {
     dislike(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: 'DELETE',
-            headers: this._hearequestHeaders(),
+            headers: this.requestHeaders(),
         })
           .then((res) => this._getResponse(res))
     }
