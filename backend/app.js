@@ -9,17 +9,18 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
 const { login, createUser } = require('./controllers/users');
 const error = require('./middlewares/error');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const NotFoundError = require('./errors/notFoundError'); // 404
 
 const { port = 3002 } = process.env;
+
 const app = express();
 
 app.use(bodyParser.json()); // для соборки JSON-формата
@@ -29,13 +30,13 @@ app.use(requestLogger);
 
 mongoose.connect(
   'mongodb://localhost:27017/mestodb',
-  // {
-  //   useNewUrlParser: true,
-  //   useUnifiedTopology: true,
-  // },
-  // (err) => {
-  //   if (err) throw err;
-  // },
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (err) throw err;
+  },
 );
 
 app.use(cors({
@@ -48,6 +49,12 @@ app.use(cors({
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
