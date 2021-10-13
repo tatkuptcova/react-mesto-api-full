@@ -128,7 +128,7 @@ function App() {
             .then(()=>{
                 setIsInfoPopupOpen(true);
                 setIsRegSucces(true);
-                history.push('/sign-in');
+                history.push('/signin');
         })
         .catch(err=>{
             if(err.status === 400){
@@ -177,7 +177,7 @@ function App() {
     function handleSignout(){
         localStorage.removeItem('jwt');
         setIsLoggedIn(false)
-        history.push('/sign-in');
+        history.push('/signin');
     }
 
     return (

@@ -73,7 +73,7 @@ app.post('/signup', celebrate({
   }),
 }), createUser);
 
-// авторизация
+// авторизацияauth.BASE_URL
 app.use(auth);
 
 app.use('/users', usersRouter);

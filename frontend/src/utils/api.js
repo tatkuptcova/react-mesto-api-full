@@ -16,6 +16,7 @@ class Api {
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
+            credentials: 'include',
             headers: this.requestHeaders(),
         })
         .then((res) => this._getResponse(res))
@@ -24,6 +25,7 @@ class Api {
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'GET',
+            credentials: 'include',
             headers: this.requestHeaders(),
         })
         .then((res) => this._getResponse(res));
@@ -32,6 +34,7 @@ class Api {
     changeUserInfo(newName, newJob) {
         return fetch(`${this._baseUrl}/users/me`, {
           method: 'PATCH',
+          credentials: 'include',
           headers: this.requestHeaders(),
           body: JSON.stringify({ name: newName, about: newJob }),
         })
@@ -41,6 +44,7 @@ class Api {
     postNewCard(name, link) {
         return fetch(`${this._baseUrl}/cards`, {
           method: 'POST',
+          credentials: 'include',
           headers: this.requestHeaders(),
           body: JSON.stringify({ name: name, link: link }),
         })
@@ -54,6 +58,7 @@ class Api {
     like(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
           method: 'PUT',
+          credentials: 'include',
           headers: this.requestHeaders(),
         })
           .then((res) => this._getResponse(res));
@@ -62,6 +67,7 @@ class Api {
     dislike(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: 'DELETE',
+            credentials: 'include',
             headers: this.requestHeaders(),
         })
           .then((res) => this._getResponse(res))
@@ -70,6 +76,7 @@ class Api {
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
           method: 'DELETE',
+          credentials: 'include',
           headers: this.requestHeaders(),
         })
           .then((res) => this._getResponse(res));
@@ -78,6 +85,7 @@ class Api {
     updateAvatar(link) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
+            credentials: 'include',
             headers: this.requestHeaders(),
             body: JSON.stringify({ avatar: link}),
         })
@@ -96,6 +104,5 @@ const api = new Api({
         'content-type': 'application/json',
     }
 });
-
 
 export default api;
