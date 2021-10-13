@@ -26,7 +26,7 @@ const app = express();
 app.use(bodyParser.json()); // для соборки JSON-формата
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(requestLogger); 
+app.use(requestLogger);
 
 mongoose.connect(
   'mongodb://localhost:27017/mestodb',
@@ -40,10 +40,10 @@ mongoose.connect(
 );
 
 app.use(cors({
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 }));
 
 app.use(helmet());
