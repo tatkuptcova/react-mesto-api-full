@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import api from '../utils/api';
@@ -123,11 +122,27 @@ function App() {
         })
     }
 
-    function handleRegSubmit(email,password){
-        auth.register(email,password)
+    function handleRegSubmit(email, password){
+        auth.register(email, password)
             .then(()=>{
                 setIsInfoPopupOpen(true);
                 setIsRegSucces(true);
+                api.getUserInfo()
+                    .then(user => {
+                    console.log(`Текущий пользователь: %o`, user)
+                    setCurrentUser(user);
+                    })
+                    .catch(err => {
+                    console.log(`Ошибка установки пользователя: ${err}`)
+                    });
+
+                api.getInitialCards()
+                    .then(res =>{
+                        setCards(res)
+                    })
+                    .catch(err => {
+                        console.log(`Ошибка установки карточек: ${err}`)
+                    });
                 history.push('/signin');
         })
         .catch(err=>{
