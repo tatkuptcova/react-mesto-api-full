@@ -11,7 +11,6 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
   rules: {
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
     'no-console': 'off',
